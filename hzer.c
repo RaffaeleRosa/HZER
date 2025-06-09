@@ -40,10 +40,15 @@ static void UpdateDrawFrame(void);          // Update and draw one frame
 int main(void)
 {
     // Initialization
-    //--------------------------------------------------------------------------------------
-    InitWindow(SCREENWIDTH, SCREENHEIGHT, "HZER V0.0.2");
+    // Window
+    InitWindow(SCREENWIDTH, SCREENHEIGHT, "Horror Zombie Escape Room");
 
+    // Audio
     InitAudioDevice();
+    while (!IsAudioDeviceReady())
+    {
+        // Hold until audio is ready
+    }
 
     camera.offset = (Vector2){0.0f, 0.0f};
     camera.rotation = 0.0f;
@@ -51,7 +56,6 @@ int main(void)
     camera.target = (Vector2){0.0f, 0.0f};
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -60,6 +64,9 @@ int main(void)
     }
 
     // De-Initialization
+    // Audio
+    CloseAudioDevice();
+
     // Close window and OpenGL context
     CloseWindow();                  
 
@@ -84,7 +91,8 @@ static void UpdateDrawFrame(void)
 
         EndMode2D();
 
-        DrawText("HORROR ZOMBIE ESCAPE ROOM", 10, 25, 20, BLACK);
+        DrawText("HORROR ZOMBIE ESCAPE ROOM", 100, SCREENHEIGHT/2 - 100, 100, BLACK);
+        DrawText("PRESS ENTER TO START", SCREENWIDTH / 6, SCREENHEIGHT / 2 + 300, 100, BLACK);
 
         DrawFPS(SCREENWIDTH - 100, SCREENHEIGHT - 25);
 
