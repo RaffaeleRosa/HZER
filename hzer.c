@@ -34,9 +34,7 @@ Camera2D camera = { 0 };
 //----------------------------------------------------------------------------------
 static void UpdateDrawFrame(void);          // Update and draw one frame
 
-//----------------------------------------------------------------------------------
-// Main entry point
-//----------------------------------------------------------------------------------
+
 int main(void)
 {
     // Initialization
@@ -76,26 +74,18 @@ int main(void)
 // Update and draw game frame
 static void UpdateDrawFrame(void)
 {
-    // Update
-    //----------------------------------------------------------------------------------
-    // UpdateCamera(&camera, CAMERA_ORBITAL);
-    //----------------------------------------------------------------------------------
-
-    // Draw
-    //----------------------------------------------------------------------------------
     BeginDrawing();
 
-        ClearBackground(DARKGRAY);
+    ClearBackground(DARKGRAY);
 
-        BeginMode2D(camera);
+    BeginMode2D(camera);
 
-        EndMode2D();
+    EndMode2D();
 
-        DrawText("HORROR ZOMBIE ESCAPE ROOM", 100, SCREENHEIGHT/2 - 100, 100, BLACK);
-        DrawText("PRESS ENTER TO START", SCREENWIDTH / 6, SCREENHEIGHT / 2 + 300, 100, BLACK);
+    DrawText("HORROR ZOMBIE ESCAPE ROOM", 100, SCREENHEIGHT/2 - 100, 100, BLACK);
+    DrawText("PRESS ENTER TO START", SCREENWIDTH / 6, SCREENHEIGHT / 2 + 300, 100, BLACK);
 
-        DrawFPS(SCREENWIDTH - 100, SCREENHEIGHT - 25);
+    DrawFPS(SCREENWIDTH - 100, SCREENHEIGHT - 25);
 
     EndDrawing();
-    //----------------------------------------------------------------------------------
 }
